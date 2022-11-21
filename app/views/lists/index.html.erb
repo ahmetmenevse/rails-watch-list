@@ -1,15 +1,18 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>lists</h1>
-
-<div class="row">
-    <% @lists.each do |list| %>
-      <div class="co-12 col-sm-6 col-md-4 mb-3">
-        <%= link_to list_path(list), class:"text-decoration-none" do %>
-          <%= list.name %>
-        <% end %>
+<div class="container mt-5">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.grandcinemas.com.au/SharedContent/MdYf1YyzZk-Rl63ptKsB9g.jpg)">
+    <div class="container text-center">
+      <p>Save any kind of movies</p>
       </div>
-    <% end %>
-</div>
+  </div>
 
-<%= link_to "New list", new_list_path %>
+
+  <div class="cards mt-5">
+      <% @lists.each do |list| %>
+          <%= link_to list_path(list), class:"text-decoration-none"  do %>
+          <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('list_background.jpg') %>)">
+            <%= list.name %>
+          </div>
+          <% end %>
+      <% end %>
+  </div>
+</div>
