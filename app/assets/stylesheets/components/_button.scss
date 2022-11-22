@@ -11,3 +11,16 @@
   background: #4D04C4;
   color: white;
 }
+
+.btn-delete {
+  color: white;
+  background-color: rgb(152, 14, 14);
+  text-align: center;
+  padding: 8px 24px;
+  border-radius: 4px;
+}
+
+.btn-delete:hover {
+  background:  rgb(84, 14, 14);;
+  color: rgb(0, 0, 0);
+}

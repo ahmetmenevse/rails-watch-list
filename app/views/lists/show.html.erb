@@ -2,22 +2,25 @@
   <div class="card-category card-large" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('list_background.jpg') %>)">
     <h1><%= @list.name %></h1>
   </div>
-
-    <%= link_to "New Bookmark", new_list_bookmark_path(@list), class: "btn btn-flat" %>
-
-  <div class="d-flex justify-content-between">
-    <div class="cards">
-      <div class="row my-5">
-        <% @list.movies.each do |movie| %>
-          <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-            <%= image_tag movie.poster_url, alt: movie.title, class: "movie-img rounded-top" %>
-              <p><strong>Title:</strong> <%= movie.title %></p>
-              <p><strong>Rating:</strong><%= movie.rating %></p>
-              <p><strong>Overview:</strong><%= movie.overview %></p>
+  <br>
+  <%= link_to "New Bookmark", new_list_bookmark_path(@list), class: "btn btn-flat py-1" %>
+  <br>
+    <div class="cards mt-3">
+      <% @list.movies.each do |movie| %>
+        <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+        <div class="movies">
+          <div class="row ">
+            <%= image_tag movie.poster_url, alt: movie.title, class: "movie-img rounded-top", height: 150 %>
+              <p><strong><%= movie.title %></strong> - <%= movie.rating %> ⭐️ </p>
+              <p><%= movie.overview %></p>
+            <div id="comment">
               <p><strong>Comment:</strong><%= bookmark.comment %></p>
-              <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %></small>
-        <% end %>
-      </div>
+               </div>
+              <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger text-end' %></small>
+
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
+
 </div>
